@@ -13,6 +13,7 @@ class AddToDoViewController: UIViewController {
     
     // MARK: - Properties
     var managedContext: NSManagedObjectContext!
+    var todo: Todo?
     
     // MArK: Outlets
     @IBOutlet weak var textView: UITextView!
@@ -28,6 +29,12 @@ class AddToDoViewController: UIViewController {
         // listen to keyboard notification
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         textView.becomeFirstResponder()
+        
+        if let todo = todo {
+            textView.text = todo.title
+            textView.text = todo.title
+            segmentControl.selectedSegmentIndex = Int(todo.priority)
+        }
     }
     
     @objc func keyboardWillShow(with notification: Notification) {
@@ -47,27 +54,36 @@ class AddToDoViewController: UIViewController {
     
     // MARK: - Actions
     
+    fileprivate func dismiss() {
+        dismiss(animated: true, completion: nil)
+        textView.resignFirstResponder()
+    }
+    
     @IBAction func doneTapped(_ sender: UIButton) {
         guard let title = textView.text, !title.isEmpty else {
             return
         }
-        let todo = Todo(context: managedContext)
-        todo.title = title
-        todo.priority = Int16(segmentControl.selectedSegmentIndex)
-        todo.date = Date()
+        
+        if let todo = self.todo {
+            todo.title = title
+            todo.priority = Int16(segmentControl.selectedSegmentIndex)
+        } else {
+            let todo = Todo(context: managedContext)
+            todo.title = title
+            todo.priority = Int16(segmentControl.selectedSegmentIndex)
+            todo.date = Date()
+        }
         
         do {
             try managedContext.save()
-            dismiss(animated: true, completion: nil)
-            textView.resignFirstResponder()
+            dismiss()
         } catch {
             print("Error saving todo: \(error)")
         }
     }
     
     @IBAction func closeTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        textView.resignFirstResponder()
+        dismiss()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
