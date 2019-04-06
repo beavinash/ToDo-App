@@ -13,7 +13,7 @@
         <!--Today's Tasks-->
         <scene sceneID="2vD-vo-rcn">
             <objects>
-                <tableViewController id="5p6-sc-np1" sceneMemberID="viewController">
+                <tableViewController id="5p6-sc-np1" customClass="ToDoTableViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="60V-G7-Ls2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="1134.7826086956522" y="143.97321428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Add To Do View Controller-->
         <scene sceneID="9db-Ki-k15">
             <objects>
-                <viewController id="E86-mB-gWe" sceneMemberID="viewController">
+                <viewController id="E86-mB-gWe" customClass="AddToDoViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xu9-Bh-T0O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,6 +82,9 @@
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="E86-mB-gWe" id="ml2-Vs-Jgm"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
                             </stackView>
@@ -101,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="36" width="382" height="33"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17N-am-A0U">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="EFR-ms-3As"/>
@@ -110,14 +113,20 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="closeTapped:" destination="E86-mB-gWe" eventType="touchUpInside" id="yQI-pT-ccz"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-wH-hIE">
-                                                <rect key="frame" x="88" y="0.0" width="294" height="33"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-wH-hIE">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Done">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="doneTapped:" destination="E86-mB-gWe" eventType="touchUpInside" id="sI0-lf-QqR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -130,12 +139,18 @@
                             <constraint firstItem="9oo-Z6-xf8" firstAttribute="leading" secondItem="rK0-2O-fR2" secondAttribute="leading" constant="16" id="Few-7f-8Rf"/>
                             <constraint firstItem="rK0-2O-fR2" firstAttribute="trailing" secondItem="t3I-t2-3Hw" secondAttribute="trailing" constant="16" id="O4b-CP-yv7"/>
                             <constraint firstItem="9oo-Z6-xf8" firstAttribute="top" secondItem="rK0-2O-fR2" secondAttribute="top" id="SHj-Jm-pOX"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="t3I-t2-3Hw" secondAttribute="bottom" id="XoN-A2-xit"/>
+                            <constraint firstAttribute="bottom" secondItem="t3I-t2-3Hw" secondAttribute="bottom" constant="34" id="XoN-A2-xit"/>
                             <constraint firstItem="rK0-2O-fR2" firstAttribute="trailing" secondItem="9oo-Z6-xf8" secondAttribute="trailing" constant="16" id="g2e-bC-bhy"/>
                             <constraint firstItem="t3I-t2-3Hw" firstAttribute="leading" secondItem="rK0-2O-fR2" secondAttribute="leading" constant="16" id="hor-Ik-oTZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rK0-2O-fR2"/>
                     </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="XoN-A2-xit" id="g5H-4A-kzE"/>
+                        <outlet property="doneButton" destination="d6F-wH-hIE" id="OPJ-4A-Zac"/>
+                        <outlet property="segmentControl" destination="eqF-Q0-U6b" id="779-9E-Ofw"/>
+                        <outlet property="textView" destination="Lth-YX-k5d" id="FDB-Pb-Xhk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTc-1T-BgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
