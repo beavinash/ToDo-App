@@ -13,6 +13,7 @@
 		8205114522582BD200905A34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8205114322582BD200905A34 /* LaunchScreen.storyboard */; };
 		8205114E22587F7A00905A34 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8205114D22587F7A00905A34 /* ToDoTableViewController.swift */; };
 		8205115022587F9200905A34 /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8205114F22587F9200905A34 /* AddToDoViewController.swift */; };
+		8205115422592DFF00905A34 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8205115222592DFF00905A34 /* Todo.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8205114622582BD200905A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8205114D22587F7A00905A34 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		8205114F22587F9200905A34 /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
+		8205115322592DFF00905A34 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		8205113922582BD000905A34 /* ToDo App */ = {
 			isa = PBXGroup;
 			children = (
+				8205115122592DB400905A34 /* Model */,
 				8205114C22587F5000905A34 /* Controllers */,
 				8205113A22582BD000905A34 /* AppDelegate.swift */,
 				8205113E22582BD100905A34 /* Main.storyboard */,
@@ -73,6 +76,14 @@
 				8205114F22587F9200905A34 /* AddToDoViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8205115122592DB400905A34 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8205115222592DFF00905A34 /* Todo.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +160,7 @@
 				8205113B22582BD000905A34 /* AppDelegate.swift in Sources */,
 				8205115022587F9200905A34 /* AddToDoViewController.swift in Sources */,
 				8205114E22587F7A00905A34 /* ToDoTableViewController.swift in Sources */,
+				8205115422592DFF00905A34 /* Todo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +360,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8205115222592DFF00905A34 /* Todo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8205115322592DFF00905A34 /* Todo.xcdatamodel */,
+			);
+			currentVersion = 8205115322592DFF00905A34 /* Todo.xcdatamodel */;
+			path = Todo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8205112F22582BD000905A34 /* Project object */;
 }
