@@ -7,12 +7,32 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoTableViewController: UITableViewController {
-
+    
+    // MARK: - Properties
+    
+    var resultsController: NSFetchedResultsController<Todo>!
+    let addCoreData = AddCoreData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // created request todos
+        let request: NSFetchRequest<Todo> = Todo.fetchRequest()
+        let sortDescriptors = NSSortDescriptor(key: "date", ascending: true)
+        request.sortDescriptors = [sortDescriptors]
+        
+        // Init
+        resultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: addCoreData.managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Fetch
+        do {
+            try resultsController.performFetch()
+        } catch {
+            print("Perform fetch error: \(error)")
+        }
         
     }
 
@@ -25,14 +45,15 @@ class ToDoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return resultsController.sections?[section].numberOfObjects ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
 
-        cell.detailTextLabel?.text = "Hello"
+        let todo = resultsController.object(at: indexPath)
+        cell.textLabel?.text = todo.title
 
         return cell
     }
@@ -87,6 +108,9 @@ class ToDoTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let _ = sender as? UIBarButtonItem, let vc = segue.destination as? AddToDoViewController {
+            vc.managedContext = addCoreData.managedContext
+        }
     }
 
 }

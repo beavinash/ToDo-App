@@ -14,6 +14,7 @@
 		8205114E22587F7A00905A34 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8205114D22587F7A00905A34 /* ToDoTableViewController.swift */; };
 		8205115022587F9200905A34 /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8205114F22587F9200905A34 /* AddToDoViewController.swift */; };
 		8205115422592DFF00905A34 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8205115222592DFF00905A34 /* Todo.xcdatamodeld */; };
+		82051156225931D000905A34 /* AddCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82051155225931D000905A34 /* AddCoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8205114D22587F7A00905A34 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		8205114F22587F9200905A34 /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		8205115322592DFF00905A34 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
+		82051155225931D000905A34 /* AddCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				8205115222592DFF00905A34 /* Todo.xcdatamodeld */,
+				82051155225931D000905A34 /* AddCoreData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82051156225931D000905A34 /* AddCoreData.swift in Sources */,
 				8205113B22582BD000905A34 /* AppDelegate.swift in Sources */,
 				8205115022587F9200905A34 /* AddToDoViewController.swift in Sources */,
 				8205114E22587F7A00905A34 /* ToDoTableViewController.swift in Sources */,

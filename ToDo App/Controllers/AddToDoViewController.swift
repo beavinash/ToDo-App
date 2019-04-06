@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class AddToDoViewController: UIViewController {
+    
+    // MARK: - Properties
+    var managedContext: NSManagedObjectContext!
     
     // MArK: Outlets
     @IBOutlet weak var textView: UITextView!
@@ -44,8 +48,21 @@ class AddToDoViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func doneTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        textView.resignFirstResponder()
+        guard let title = textView.text, !title.isEmpty else {
+            return
+        }
+        let todo = Todo(context: managedContext)
+        todo.title = title
+        todo.priority = Int16(segmentControl.selectedSegmentIndex)
+        todo.date = Date()
+        
+        do {
+            try managedContext.save()
+            dismiss(animated: true, completion: nil)
+            textView.resignFirstResponder()
+        } catch {
+            print("Error saving todo: \(error)")
+        }
     }
     
     @IBAction func closeTapped(_ sender: UIButton) {
@@ -75,6 +92,7 @@ extension AddToDoViewController: UITextViewDelegate {
             textView.textColor = .white
             
             doneButton.isHidden = false
+            
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
